@@ -4,8 +4,7 @@ metadata:
   name: redis
   annotations:
     argocd.argoproj.io/sync-wave: "1"
-    argocd.argoproj.io/dependency: operator-redis
-    argocd.argoproj.io/dependency.wait: "true"
+syncPolicy: {}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -14,8 +13,6 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "2"
-    argocd.argoproj.io/dependency: operator-redis
-    argocd.argoproj.io/dependency.wait: "true"
 spec:
   project: default
   source:
@@ -25,3 +22,4 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: redis
+syncPolicy: {}
